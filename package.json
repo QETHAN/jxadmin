@@ -19,5 +19,9 @@
   "homepage": "https://github.com/QETHAN/jxadmin#readme",
   "dependencies": {
     "koa": "^2.6.2"
+  },
+  "devDependencies": {
+    "shipit-cli": "^4.1.2",
+    "shipit-deploy": "^4.1.3"
   }
 }

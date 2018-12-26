@@ -2,7 +2,7 @@ const koa = require('koa')
 const app = new koa()
 
 app.use(async ctx => {
-    ctx.body = 'Hello World';
+    ctx.body = '老婆，我爱你❤️';
 })
 
 app.listen(3000, () => {
