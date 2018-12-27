@@ -1,4 +1,4 @@
-module.exports = function (shipit) {
+module.exports = shipit => {
     require('shipit-deploy')(shipit);
     require('shipit-shared')(shipit);
     require('shipit-npm')(shipit);
@@ -19,14 +19,30 @@ module.exports = function (shipit) {
         },
         shared: {
             overwrite: true,
-            files: [
-                'config/application.yml',
-                'config/database.yml'
+            dirs: [
+                'config'
             ],
+            chmod: '755'
         }
       },
       staging: {
         servers: 'ubuntu@129.28.82.67'
       }
     });
+
+    shipit.blTask('copyConfig', async () => {
+        await shipit.copyToRemote(
+            'config/application.yml',
+            '/var/www/website/shared/config/application.yml',
+        )
+
+        await shipit.copyToRemote(
+            'config/database.yml',
+            '/var/www/website/shared/config/database.yml',
+        )
+    });
+
+    shipit.on('sharedDirsCreated', async () => {
+        shipit.start('copyConfig'); 
+    })
 };
