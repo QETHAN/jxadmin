@@ -1,0 +1,19 @@
+{
+    "apps": [
+      {
+        "name": "jxadmin", 
+        "script": "app.js",
+        "max_memory_restart": "300M",
+        "out_file": "/var/www/website/logs/jxadmin_out.log",
+        "error_file": "/var/www/website/logs/jxadmin_error.log",
+        "args": "--env=production",
+        "instances": 1,
+        "exec_mode": "cluster",
+        "cwd": "/var/www/website/current",
+        "env": {
+          "NODE_ENV": "production",
+          "PORT": "9001"
+        }
+      }
+    ]
+  }
