@@ -1,5 +1,6 @@
 module.exports = function (shipit) {
     require('shipit-deploy')(shipit);
+    require('shipit-shared')(shipit);
     require('shipit-npm')(shipit);
     require('shipit-pm2')(shipit);
   
